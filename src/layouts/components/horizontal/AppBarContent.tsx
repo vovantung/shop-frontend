@@ -12,7 +12,7 @@ import LanguageDropdown from 'src/@core/layouts/components/shared-components/Lan
 
 import CartDropdown from 'src/@core/layouts/components/shared-components/CartDropdown'
 
-import ShortcutsDropdown, { ShortcutsType } from 'src/@core/layouts/components/shared-components/ShortcutsDropdown'
+// import ShortcutsDropdown, { ShortcutsType } from 'src/@core/layouts/components/shared-components/ShortcutsDropdown'
 
 // ** Hook Import
 import { useAuth } from 'src/hooks/useAuth'
@@ -40,56 +40,56 @@ interface Props {
   setItemsCart: any
 }
 
-const shortcuts: ShortcutsType[] = [
-  {
-    title: 'Calendar',
-    url: '/apps/calendar',
-    icon: 'tabler:calendar',
-    subtitle: 'Appointments'
-  },
-  {
-    title: 'Invoice App',
-    url: '/apps/invoice/list',
-    icon: 'tabler:file-invoice',
-    subtitle: 'Manage Accounts'
-  },
-  {
-    title: 'User App',
-    icon: 'tabler:users',
-    url: '/apps/user/list',
-    subtitle: 'Manage Users'
-  },
-  {
-    url: '/apps/roles',
-    icon: 'tabler:lock',
-    subtitle: 'Permissions',
-    title: 'Role Management'
-  },
-  {
-    subtitle: 'CRM',
-    title: 'Dashboard',
-    url: '/dashboards/crm',
-    icon: 'tabler:device-analytics'
-  },
-  {
-    title: 'Settings',
-    icon: 'tabler:settings',
-    subtitle: 'Account Settings',
-    url: '/pages/account-settings/account'
-  },
-  {
-    icon: 'tabler:help',
-    title: 'Help Center',
-    url: '/pages/help-center',
-    subtitle: 'FAQs & Articles'
-  },
-  {
-    title: 'Dialogs',
-    icon: 'tabler:square',
-    subtitle: 'Useful Popups',
-    url: '/pages/dialog-examples'
-  }
-]
+// const shortcuts: ShortcutsType[] = [
+//   {
+//     title: 'Calendar',
+//     url: '/apps/calendar',
+//     icon: 'tabler:calendar',
+//     subtitle: 'Appointments'
+//   },
+//   {
+//     title: 'Invoice App',
+//     url: '/apps/invoice/list',
+//     icon: 'tabler:file-invoice',
+//     subtitle: 'Manage Accounts'
+//   },
+//   {
+//     title: 'User App',
+//     icon: 'tabler:users',
+//     url: '/apps/user/list',
+//     subtitle: 'Manage Users'
+//   },
+//   {
+//     url: '/apps/roles',
+//     icon: 'tabler:lock',
+//     subtitle: 'Permissions',
+//     title: 'Role Management'
+//   },
+//   {
+//     subtitle: 'CRM',
+//     title: 'Dashboard',
+//     url: '/dashboards/crm',
+//     icon: 'tabler:device-analytics'
+//   },
+//   {
+//     title: 'Settings',
+//     icon: 'tabler:settings',
+//     subtitle: 'Account Settings',
+//     url: '/pages/account-settings/account'
+//   },
+//   {
+//     icon: 'tabler:help',
+//     title: 'Help Center',
+//     url: '/pages/help-center',
+//     subtitle: 'FAQs & Articles'
+//   },
+//   {
+//     title: 'Dialogs',
+//     icon: 'tabler:square',
+//     subtitle: 'Useful Popups',
+//     url: '/pages/dialog-examples'
+//   }
+// ]
 
 const AppBarContent = (props: Props) => {
   // ** Props
