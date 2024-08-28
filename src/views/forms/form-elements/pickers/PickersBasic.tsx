@@ -23,9 +23,9 @@ const PickersBasic = ({ popperPlacement }: { popperPlacement: ReactDatePickerPro
         <DatePicker
           selected={date}
           id='basic-input'
-          popperPlacement={popperPlacement}
           onChange={(date: Date) => setDate(date)}
           placeholderText='Click to select a date'
+          popperPlacement={popperPlacement}
           customInput={<CustomInput label='Basic' />}
         />
       </div>

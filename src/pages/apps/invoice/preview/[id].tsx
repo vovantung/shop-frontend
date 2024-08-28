@@ -10,16 +10,16 @@ import { InvoiceType } from 'src/types/apps/invoiceTypes'
 // ** Demo Components Imports
 import Preview from 'src/views/apps/invoice/preview/Preview'
 
-const InvoicePreview = ({ id }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return <Preview id={id} />
+const InvoicePreview = ({}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  return <Preview id={'9999'} />
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await axios.get('/apps/invoice/invoices')
   const data: InvoiceType[] = await res.data.allData
 
-  const paths = data.map((item: InvoiceType) => ({
-    params: { id: `${item.id}` }
+  const paths = data.map(() => ({
+    params: { id: '9999' }
   }))
 
   return {

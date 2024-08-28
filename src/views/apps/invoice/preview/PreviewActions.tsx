@@ -33,7 +33,7 @@ const PreviewActions = ({ id, toggleSendInvoiceDrawer, toggleAddPaymentDrawer }:
           variant='tonal'
           component={Link}
           color='secondary'
-          href={`/apps/invoice/print/${id}`}
+          href={`/apps/invoice/print/4987`}
         >
           Print
         </Button>

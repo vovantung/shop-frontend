@@ -260,7 +260,7 @@ const PreviewCard = ({ data }: Props) => {
                 <Typography sx={{ color: 'text.secondary' }}>Tommy Shelby</Typography>
               </Box>
 
-              <Typography sx={{ color: 'text.secondary' }}>Thanks for your business</Typography>
+              <Typography sx={{ color: 'text.secondary' }}>AAAA</Typography>
             </Grid>
             <Grid item xs={12} sm={5} lg={3} sx={{ mb: { sm: 0, xs: 4 }, order: { sm: 2, xs: 1 } }}>
               <CalcWrapper>
@@ -291,8 +291,7 @@ const PreviewCard = ({ data }: Props) => {
             <Typography component='span' sx={{ mr: 1.5, fontWeight: 500, color: 'inherit' }}>
               Note:
             </Typography>
-            It was a pleasure working with you and your team. We hope you will keep us in mind for future freelance
-            projects. Thank You!
+            ABC
           </Typography>
         </CardContent>
       </Card>

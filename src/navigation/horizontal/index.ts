@@ -8,12 +8,18 @@ const navigation = (): HorizontalNavItemsType => {
       title: 'e-Commerce',
       children: [
         {
-          icon: 'fluent-mdl2:product-list',
+          icon: 'tabler:brand-adobe-photoshop',
           title: 'Products',
-          path: '/shop/products'
+          path: '/e-commerce/products'
+        },
+        {
+          icon: 'tabler:checkup-list',
+          title: 'Orders',
+          path: '/e-commerce/orders'
         }
       ]
     },
+
     {
       icon: 'tabler:smart-home',
       title: 'Dashboards',

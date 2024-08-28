@@ -2,11 +2,12 @@
 import { useEffect, useState } from 'react'
 
 // ** Next Import
-import Link from 'next/link'
+// import Link from 'next/link'
 
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
-import Alert from '@mui/material/Alert'
+
+// import Alert from '@mui/material/Alert'
 import Table from '@mui/material/Table'
 import Divider from '@mui/material/Divider'
 import TableRow from '@mui/material/TableRow'
@@ -15,16 +16,30 @@ import TableBody from '@mui/material/TableBody'
 import Typography from '@mui/material/Typography'
 import Box, { BoxProps } from '@mui/material/Box'
 import { styled, useTheme } from '@mui/material/styles'
-import TableCell, { TableCellBaseProps } from '@mui/material/TableCell'
 
-// ** Types
-import { SingleInvoiceType } from 'src/types/apps/invoiceTypes'
-
-// ** Third Party Components
-import axios from 'axios'
+import TableCell from '@mui/material/TableCell'
 
 // ** Configs
 import themeConfig from 'src/configs/themeConfig'
+import { Alert, Link } from '@mui/material'
+import Router from 'next/router'
+
+interface OrderDetails {
+  id: {
+    productEntity: {
+      id: string
+      name: string
+      price: number
+      description: string
+      createDatetime: string
+      updateDatetime: string
+      rateAvg: number
+    }
+  }
+  quantity: number
+  createDatetime: string
+  updateDatetime: string
+}
 
 const CalcWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   display: 'flex',
@@ -35,44 +50,56 @@ const CalcWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   }
 }))
 
-const MUITableCell = styled(TableCell)<TableCellBaseProps>(({ theme }) => ({
-  borderBottom: 0,
-  paddingLeft: '0 !important',
-  paddingRight: '0 !important',
-  paddingTop: `${theme.spacing(1)} !important`,
-  paddingBottom: `${theme.spacing(1)} !important`
-}))
+// const MUITableCell = styled(TableCell)<TableCellBaseProps>(({ theme }) => ({
+//   borderBottom: 0,
+//   paddingLeft: '0 !important',
+//   paddingRight: '0 !important',
+//   paddingTop: `${theme.spacing(1)} !important`,
+//   paddingBottom: `${theme.spacing(1)} !important`
+// }))
 
-const InvoicePrint = ({ id }: any) => {
+const OrderPrint = ({ id }: any) => {
   // ** State
-  const [error, setError] = useState<boolean>(false)
-  const [data, setData] = useState<null | SingleInvoiceType>(null)
+  const [data, setData] = useState<OrderDetails[]>([])
+  const [total, setTotal] = useState<number>(0)
 
   // ** Hooks
   const theme = useTheme()
 
   useEffect(() => {
-    setTimeout(() => {
-      window.print()
-    }, 100)
-  }, [])
-
-  useEffect(() => {
-    axios
-      .get('/apps/invoice/single-invoice', { params: { id } })
-      .then(res => {
-        setData(res.data)
-        setError(false)
-      })
-      .catch(() => {
-        setData(null)
-        setError(true)
-      })
+    loadItems(id)
   }, [id])
 
-  if (data) {
-    const { invoice, paymentDetails } = data
+  async function loadItems(id: string) {
+    if (id == undefined || id == '' || id == null) {
+      return
+    }
+    try {
+      const r = {
+        method: 'GET'
+      }
+      const response = await fetch('http://localhost:8080/order/items/' + id, r)
+      const data = await response.json()
+      if (data !== undefined) {
+        setData(data)
+      }
 
+      // setTimeout(() => {
+      //   window.print()
+      // }, 500)
+
+      let total = 0
+      for (let index = 0; index < data.length; index++) {
+        const element = data[index]
+        total = total + element.quantity * element.id.productEntity.price
+      }
+      setTotal(total)
+    } catch (error) {
+      Router.replace('/pages/misc/500-server-error')
+    }
+  }
+
+  if (data.length !== 0) {
     return (
       <Box sx={{ p: 12, pb: 6 }}>
         <Grid container>
@@ -112,13 +139,15 @@ const InvoicePrint = ({ id }: any) => {
                 </Typography>
               </Box>
               <div>
-                <Typography sx={{ mb: 1, color: 'text.secondary' }}>Office 149, 450 South Brand Brooklyn</Typography>
-                <Typography sx={{ mb: 1, color: 'text.secondary' }}>San Diego County, CA 91905, USA</Typography>
-                <Typography sx={{ color: 'text.secondary' }}>+1 (123) 456 7891, +44 (876) 543 2198</Typography>
+                <Typography sx={{ mb: 1, color: 'text.secondary' }}>
+                  Address: My An Hung B, Lap Vo, Dong Thap, Viet Nam.
+                </Typography>
+                <Typography sx={{ color: 'text.secondary' }}>Tel: (+84) 326.667.748</Typography>
               </div>
             </Box>
           </Grid>
-          <Grid item xs={4}>
+
+          {/* <Grid item xs={4}>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: { sm: 'flex-end', xs: 'flex-start' } }}>
               <Typography variant='h4' sx={{ mb: 2 }}>
                 {`Invoice #${invoice.id}`}
@@ -132,13 +161,13 @@ const InvoicePrint = ({ id }: any) => {
                 <Typography sx={{ fontWeight: 600, color: 'text.secondary' }}>{invoice.dueDate}</Typography>
               </Box>
             </Box>
-          </Grid>
+          </Grid> */}
         </Grid>
 
         <Divider sx={{ my: theme => `${theme.spacing(6)} !important` }} />
 
         <Grid container>
-          <Grid item xs={7} md={8} sx={{ mb: { lg: 0, xs: 4 } }}>
+          {/* <Grid item xs={7} md={8} sx={{ mb: { lg: 0, xs: 4 } }}>
             <Typography variant='h6' sx={{ mb: 3.5, fontWeight: 600 }}>
               Invoice To:
             </Typography>
@@ -147,18 +176,16 @@ const InvoicePrint = ({ id }: any) => {
             <Typography sx={{ mb: 2, color: 'text.secondary' }}>{invoice.address}</Typography>
             <Typography sx={{ mb: 2, color: 'text.secondary' }}>{invoice.contact}</Typography>
             <Typography sx={{ mb: 2, color: 'text.secondary' }}>{invoice.companyEmail}</Typography>
-          </Grid>
+          </Grid> */}
           <Grid item xs={5} md={4}>
             <Typography variant='h6' sx={{ mb: 3.5, fontWeight: 600 }}>
               Bill To:
             </Typography>
-            <Table>
+            {/* <Table>
               <TableBody>
                 <TableRow>
                   <MUITableCell sx={{ color: 'text.secondary' }}>Total Due:</MUITableCell>
-                  <MUITableCell sx={{ fontWeight: 500, color: 'text.secondary' }}>
-                    {paymentDetails.totalDue}
-                  </MUITableCell>
+                  <MUITableCell sx={{ fontWeight: 500, color: 'text.secondary' }}>{paymentDetails.totalDue}</MUITableCell>
                 </TableRow>
                 <TableRow>
                   <MUITableCell sx={{ color: 'text.secondary' }}>Bank name:</MUITableCell>
@@ -177,114 +204,111 @@ const InvoicePrint = ({ id }: any) => {
                   <MUITableCell sx={{ color: 'text.secondary' }}>{paymentDetails.swiftCode}</MUITableCell>
                 </TableRow>
               </TableBody>
-            </Table>
+            </Table> */}
           </Grid>
         </Grid>
 
         <Divider sx={{ mt: theme => `${theme.spacing(6)} !important`, mb: '0 !important' }} />
 
-        <Table sx={{ mb: 6 }}>
-          <TableHead>
-            <TableRow>
-              <TableCell>Item</TableCell>
-              <TableCell>Description</TableCell>
-              <TableCell>hours</TableCell>
-              <TableCell>qty</TableCell>
-              <TableCell>Total</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody
-            sx={{
-              '& .MuiTableCell-root': {
-                py: `${theme.spacing(2.5)} !important`,
-                fontSize: theme.typography.body1.fontSize
-              }
-            }}
-          >
-            <TableRow>
-              <TableCell>Premium Branding Package</TableCell>
-              <TableCell>Branding & Promotion</TableCell>
-              <TableCell>48</TableCell>
-              <TableCell>1</TableCell>
-              <TableCell>$32</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Social Media</TableCell>
-              <TableCell>Social media templates</TableCell>
-              <TableCell>42</TableCell>
-              <TableCell>1</TableCell>
-              <TableCell>$28</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Web Design</TableCell>
-              <TableCell>Web designing package</TableCell>
-              <TableCell>46</TableCell>
-              <TableCell>1</TableCell>
-              <TableCell>$24</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>SEO</TableCell>
-              <TableCell>Search engine optimization</TableCell>
-              <TableCell>40</TableCell>
-              <TableCell>1</TableCell>
-              <TableCell>$22</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
+        <Box sx={{ overflow: 'auto' }}>
+          <Table sx={{ mb: 6 }}>
+            <TableHead>
+              <TableRow>
+                <TableCell sx={{ fontFamily: 'monospace' }}>
+                  <span style={{ fontWeight: 'bold' }}>Item</span>
+                </TableCell>
+                <TableCell sx={{ fontFamily: 'monospace' }}>
+                  <span style={{ fontWeight: 'bold' }}>Price</span>
+                </TableCell>
+                <TableCell sx={{ fontFamily: 'monospace' }}>
+                  <span style={{ fontWeight: 'bold' }}>QTY</span>
+                </TableCell>
+                <TableCell sx={{ fontFamily: 'monospace' }}>
+                  <span style={{ fontWeight: 'bold' }}>Total</span>
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody
+              sx={{
+                '& .MuiTableCell-root': {
+                  py: `${theme.spacing(2.5)} !important`,
+                  fontSize: theme.typography.body1.fontSize
+                }
+              }}
+            >
+              {data.map(item => (
+                <TableRow key={item.id.productEntity.id}>
+                  <TableCell sx={{ fontFamily: 'monospace' }}>{item.id.productEntity.name}</TableCell>
+                  <TableCell sx={{ fontFamily: 'monospace' }}>{item.id.productEntity.price}</TableCell>
+                  <TableCell sx={{ fontFamily: 'monospace' }}>{item.quantity}</TableCell>
+                  <TableCell sx={{ fontFamily: 'monospace' }}>
+                    <span style={{ color: '#5577bb' }}>{item.quantity * item.id.productEntity.price}</span>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Box>
 
         <Grid container>
-          <Grid item xs={8} sm={7} lg={9}>
-            <Box sx={{ mb: 2, display: 'flex', alignItems: 'center' }}>
-              <Typography sx={{ mr: 2, fontWeight: 500, color: 'text.secondary' }}>Salesperson:</Typography>
-              <Typography sx={{ color: 'text.secondary' }}>Tommy Shelby</Typography>
+          <Grid item xs={4} sm={7} lg={9}>
+            {/* <Box sx={{ mb: 2, display: 'flex', alignItems: 'center' }}>
+              <Typography sx={{ mr: 2, fontWeight: 500, color: 'text.secondary', fontFamily: 'monospace' }}>
+                Salesperson:
+              </Typography>
+              <Typography sx={{ color: 'text.secondary', fontFamily: 'monospace' }}>Tommy Shelby</Typography>
             </Box>
 
-            <Typography sx={{ color: 'text.secondary' }}>Thanks for your business</Typography>
+            <Typography sx={{ color: 'text.secondary' }}>Thanks for your business</Typography> */}
           </Grid>
-          <Grid item xs={4} sm={5} lg={3}>
+          <Grid item xs={8} sm={5} lg={3}>
             <CalcWrapper>
-              <Typography sx={{ color: 'text.secondary' }}>Subtotal:</Typography>
-              <Typography sx={{ fontWeight: 500, color: 'text.secondary' }}>$1800</Typography>
+              <Typography sx={{ color: 'text.secondary', fontFamily: 'monospace' }}>Subtotal:</Typography>
+              <Typography sx={{ fontWeight: 500, color: 'text.secondary', fontFamily: 'monospace' }}>
+                {total}VND
+              </Typography>
             </CalcWrapper>
             <CalcWrapper>
-              <Typography sx={{ color: 'text.secondary' }}>Discount:</Typography>
-              <Typography sx={{ fontWeight: 500, color: 'text.secondary' }}>$28</Typography>
+              <Typography sx={{ color: 'text.secondary', fontFamily: 'monospace' }}>Discount:</Typography>
+              <Typography sx={{ fontWeight: 500, color: 'text.secondary', fontFamily: 'monospace' }}>0VND</Typography>
             </CalcWrapper>
             <CalcWrapper>
-              <Typography sx={{ color: 'text.secondary' }}>Tax:</Typography>
-              <Typography sx={{ fontWeight: 500, color: 'text.secondary' }}>21%</Typography>
+              <Typography sx={{ color: 'text.secondary', fontFamily: 'monospace' }}>Tax:</Typography>
+              <Typography sx={{ fontWeight: 500, color: 'text.secondary', fontFamily: 'monospace' }}>0VND</Typography>
             </CalcWrapper>
-            <Divider />
+            <Divider sx={{ marginBottom: '10px' }} />
             <CalcWrapper>
-              <Typography sx={{ color: 'text.secondary' }}>Total:</Typography>
-              <Typography sx={{ fontWeight: 500, color: 'text.secondary' }}>$1690</Typography>
+              <Typography sx={{ fontWeight: 'bold', color: 'text.secondary', fontFamily: 'monospace' }}>
+                Total:
+              </Typography>
+              <Typography sx={{ fontWeight: 'bold', color: '#335599', fontFamily: 'monospace' }}>{total}VND</Typography>
             </CalcWrapper>
           </Grid>
         </Grid>
 
         <Divider sx={{ my: `${theme.spacing(6)} !important` }} />
-        <Typography sx={{ color: 'text.secondary' }}>
+        <Typography sx={{ color: 'text.secondary', fontFamily: 'monospace' }}>
           <strong>Note:</strong> It was a pleasure working with you and your team. We hope you will keep us in mind for
           future freelance projects. Thank You!
         </Typography>
       </Box>
     )
-  } else if (error) {
+  } else {
     return (
       <Box sx={{ p: 5 }}>
         <Grid container spacing={6}>
           <Grid item xs={12}>
             <Alert severity='error'>
-              Invoice with the id: {id} does not exist. Please check the list of invoices:{' '}
-              <Link href='/apps/invoice/list'>Invoice List</Link>
+              Not found products that have orderId [{id}]. Please check the list of order.
+              <Link href='/'>
+                <br></br> Go to the order list
+              </Link>
             </Alert>
           </Grid>
         </Grid>
       </Box>
     )
-  } else {
-    return null
   }
 }
 
-export default InvoicePrint
+export default OrderPrint

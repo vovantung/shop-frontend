@@ -17,6 +17,8 @@ import BlankLayout from 'src/@core/layouts/BlankLayout'
 import PrintPage from 'src/views/apps/invoice/print/PrintPage'
 
 const InvoicePrint = ({ id }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  // return <div> {id}</div>
+
   return <PrintPage id={id} />
 }
 

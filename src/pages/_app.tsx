@@ -1,5 +1,5 @@
 // ** React Imports
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 
 // ** Next Imports
 import Head from 'next/head'
@@ -102,13 +102,32 @@ const Guard = ({ children, authGuard, guestGuard }: GuardProps) => {
 
 // ** Configure JSS & ClassName
 const App = (props: ExtendedAppProps) => {
+  const [itemsCart, setItemsCart] = useState<[]>([])
+
+  // ** Hàm dùng để truyền vào cho các component con gọi, hàm trong component con gọi
+  // ** và truyền giá trị vào cho hàm này, hàm này đặt lại giá trị cho biến count (được tạo trong State)
+  const handleSetItemsCart = (itemsCart: []) => {
+    setItemsCart(itemsCart)
+  }
+
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
 
   // Variables
   const contentHeightFixed = Component.contentHeightFixed ?? false
-  const getLayout =
-    Component.getLayout ?? (page => <UserLayout contentHeightFixed={contentHeightFixed}>{page}</UserLayout>)
 
+  // const getLayout = (page: any) => (
+  //   <UserLayout contentHeightFixed={contentHeightFixed} itemsCart={itemsCart} setItemsCount={onTestFunc}>
+  //     {page}
+  //   </UserLayout>
+  // )
+
+  const getLayout =
+    Component.getLayout ??
+    (page => (
+      <UserLayout contentHeightFixed={contentHeightFixed} itemsCart={itemsCart} setItemsCart={handleSetItemsCart}>
+        {page}
+      </UserLayout>
+    ))
   const setConfig = Component.setConfig ?? undefined
 
   const authGuard = Component.authGuard ?? true
@@ -121,12 +140,9 @@ const App = (props: ExtendedAppProps) => {
     <Provider store={store}>
       <CacheProvider value={emotionCache}>
         <Head>
-          <title>{`${themeConfig.templateName} - Material Design React Admin Template`}</title>
-          <meta
-            name='description'
-            content={`${themeConfig.templateName} – Material Design React Admin Dashboard Template – is the most developer friendly & highly customizable Admin Dashboard Template based on MUI v5.`}
-          />
-          <meta name='keywords' content='Material Design, MUI, Admin Template, React Admin Template' />
+          <title>{themeConfig.templateName}</title>
+          <meta name='description' content={themeConfig.templateName} />
+          <meta name='keywords' content='TXU Shop' />
           <meta name='viewport' content='initial-scale=1, width=device-width' />
         </Head>
 
@@ -138,7 +154,16 @@ const App = (props: ExtendedAppProps) => {
                   <ThemeComponent settings={settings}>
                     <Guard authGuard={authGuard} guestGuard={guestGuard}>
                       <AclGuard aclAbilities={aclAbilities} guestGuard={guestGuard} authGuard={authGuard}>
-                        {getLayout(<Component {...pageProps} />)}
+                        {/* {getLayout(<Component {...pageProps} />)} */}
+                        {getLayout(<Component {...pageProps} setItemsCart={handleSetItemsCart} />)}
+
+                        {/* <UserLayout
+                          contentHeightFixed={contentHeightFixed}
+                          itemsCart={itemsCart}
+                          setItemsCount={onTestFunc}
+                        >
+                          <Component {...pageProps} onTestFunc={onTestFunc} />
+                        </UserLayout> */}
                       </AclGuard>
                     </Guard>
                     <ReactHotToast>

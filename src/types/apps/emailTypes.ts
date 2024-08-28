@@ -13,6 +13,8 @@ export type RouteParams = {
 
 export type MailLayoutType = RouteParams & {}
 
+export type MailLayoutType1 = RouteParams & { setItemsCart: any }
+
 export type MailAttachmentType = {
   url: string
   size: string

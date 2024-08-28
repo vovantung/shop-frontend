@@ -35,25 +35,21 @@ const FooterContent = () => {
         </Box>
         {`by`}
         <Typography sx={{ ml: 1 }} target='_blank' href='#' component={StyledCompanyName}>
-          TXU Shop
+          TXU e-Commerce
         </Typography>
       </Typography>
       {hidden ? null : (
         <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', '& :not(:last-child)': { mr: 4 } }}>
-          <Typography target='_blank' component={LinkStyled} href='https://themeforest.net/licenses/standard'>
+          <Typography target='_blank' component={LinkStyled} href='#'>
             License
           </Typography>
-          <Typography target='_blank' component={LinkStyled} href='https://1.envato.market/pixinvent_portfolio'>
+          {/* <Typography target='_blank' component={LinkStyled} href='#'>
             More Themes
-          </Typography>
-          <Typography
-            target='_blank'
-            component={LinkStyled}
-            href='https://demos.pixinvent.com/vuexy-nextjs-admin-template/documentation'
-          >
+          </Typography> */}
+          <Typography target='_blank' component={LinkStyled} href='#'>
             Documentation
           </Typography>
-          <Typography target='_blank' component={LinkStyled} href='https://pixinvent.ticksy.com'>
+          <Typography target='_blank' component={LinkStyled} href='#'>
             Support
           </Typography>
         </Box>

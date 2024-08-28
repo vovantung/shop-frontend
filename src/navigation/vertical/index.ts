@@ -8,6 +8,22 @@ const navigation = (): VerticalNavItemsType => {
       title: 'e-Commerce',
       children: [
         {
+          icon: 'tabler:brand-adobe-photoshop',
+          title: 'Products',
+          path: '/e-commerce/products'
+        },
+        {
+          icon: 'tabler:checkup-list',
+          title: 'Orders',
+          path: '/e-commerce/orders'
+        }
+      ]
+    },
+    {
+      icon: 'tabler:shopping-cart',
+      title: 'e-Commerce',
+      children: [
+        {
           icon: 'fluent-mdl2:product-list',
           title: 'Products',
           path: '/shop/products'

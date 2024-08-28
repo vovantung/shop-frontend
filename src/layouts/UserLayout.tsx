@@ -27,11 +27,17 @@ import { useSettings } from 'src/@core/hooks/useSettings'
 interface Props {
   children: ReactNode
   contentHeightFixed?: boolean
+  itemsCart: []
+  setItemsCart: any
 }
 
-const UserLayout = ({ children, contentHeightFixed }: Props) => {
+const UserLayout = ({ children, contentHeightFixed, itemsCart, setItemsCart }: Props) => {
   // ** Hooks
   const { settings, saveSettings } = useSettings()
+
+  const handleSetItemsCart = (itemsCart: []) => {
+    setItemsCart(itemsCart)
+  }
 
   // ** Vars for server side navigation
   // const { menuItems: verticalMenuItems } = ServerSideVerticalNavItems()
@@ -84,13 +90,20 @@ const UserLayout = ({ children, contentHeightFixed }: Props) => {
             // navItems: horizontalMenuItems
           },
           appBar: {
-            content: () => <HorizontalAppBarContent hidden={hidden} settings={settings} saveSettings={saveSettings} />
+            content: () => (
+              <HorizontalAppBarContent
+                hidden={hidden}
+                settings={settings}
+                saveSettings={saveSettings}
+                itemsCart={itemsCart}
+                setItemsCart={handleSetItemsCart}
+              />
+            )
           }
         }
       })}
     >
       {children}
-      
     </Layout>
   )
 }

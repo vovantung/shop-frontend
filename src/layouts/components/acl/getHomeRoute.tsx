@@ -3,7 +3,7 @@
  */
 const getHomeRoute = (role: string) => {
   if (role === 'client') return '/acl'
-  else return '/shop/products'
+  else return '/e-commerce/products'
 }
 
 export default getHomeRoute
