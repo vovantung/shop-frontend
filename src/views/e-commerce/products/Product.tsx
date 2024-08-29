@@ -56,12 +56,15 @@ const Product = (props: Props) => {
         },
         body: JSON.stringify({ productId: event.target.id, username: 'vovantung', quantity: 1 })
       }
-      await fetch('http://localhost:8080/cartitem', r)
+      await fetch('http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/cartitem', r)
 
       const r1 = {
         method: 'GET'
       }
-      const response = await fetch('http://localhost:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000', r1)
+      const response = await fetch(
+        'http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+        r1
+      )
       const itemsCart = await response.json()
       if (itemsCart !== undefined) {
         props.setItemsCart(itemsCart)

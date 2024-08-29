@@ -78,7 +78,10 @@ const OrderPrint = ({ id }: any) => {
       const r = {
         method: 'GET'
       }
-      const response = await fetch('http://localhost:8080/order/items/' + id, r)
+      const response = await fetch(
+        'http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/order/items/' + id,
+        r
+      )
       const data = await response.json()
       if (data !== undefined) {
         setData(data)

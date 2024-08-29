@@ -172,7 +172,10 @@ const Orders = () => {
       const r = {
         method: 'GET'
       }
-      const response = await fetch('http://localhost:8080/order/items/' + orderId, r)
+      const response = await fetch(
+        'http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/order/items/' + orderId,
+        r
+      )
       const itemsOrder = await response.json()
       if (itemsOrder !== undefined) {
         setItemsOrder(itemsOrder)
@@ -191,7 +194,10 @@ const Orders = () => {
       const r = {
         method: 'GET'
       }
-      const response = await fetch('http://localhost:8080/order/items/' + orderId, r)
+      const response = await fetch(
+        'http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/order/items/' + orderId,
+        r
+      )
       const itemsOrder = await response.json()
       if (itemsOrder !== undefined) {
         setItemsOrder(itemsOrder)
@@ -224,7 +230,12 @@ const Orders = () => {
         method: 'GET'
       }
       const response = await fetch(
-        'http://localhost:8080/order/2c9e80818e69d39b018e69d3d2ee0000/' + date1 + '/' + date2 + '/' + isAllOrder,
+        'http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/order/2c9e80818e69d39b018e69d3d2ee0000/' +
+          date1 +
+          '/' +
+          date2 +
+          '/' +
+          isAllOrder,
         r
       )
       const orders = await response.json()
@@ -252,7 +263,7 @@ const Orders = () => {
           delivered: event.target.checked
         })
       }
-      await fetch('http://localhost:8080/order/delivered', r)
+      await fetch('http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/order/delivered', r)
       loadOrders()
     } catch (error) {
       Router.replace('/pages/misc/500-server-error')
@@ -275,7 +286,7 @@ const Orders = () => {
           paided: event.target.checked
         })
       }
-      await fetch('http://localhost:8080/order/paided', r)
+      await fetch('http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/order/paided', r)
 
       loadOrders()
     } catch (error) {
@@ -296,7 +307,7 @@ const Orders = () => {
             orderId: id
           })
         }
-        await fetch('http://localhost:8080/order', r)
+        await fetch('http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/order', r)
         loadOrders()
       }
     } catch (error) {
@@ -329,11 +340,14 @@ const Orders = () => {
       const r = {
         method: 'DELETE'
       }
-      await fetch('http://localhost:8080/order/item/' + tempId + '/' + id, r)
+      await fetch('http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/order/item/' + tempId + '/' + id, r)
       const r1 = {
         method: 'GET'
       }
-      const response = await fetch('http://localhost:8080/order/items/' + tempId, r1)
+      const response = await fetch(
+        'http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/order/items/' + tempId,
+        r1
+      )
       const orderDetails = await response.json()
       if (orderDetails !== undefined) {
         setItemsOrder(orderDetails)
@@ -361,7 +375,7 @@ const Orders = () => {
             orderId: tempId
           })
         }
-        await fetch('http://localhost:8080/order/item/update-quantity', r)
+        await fetch('http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/order/item/update-quantity', r)
       }
 
       // ** Đặt lại itemsCart sau khi đã cập nhật quantity, tính toán lại tổng giá sản phẩm và tổng tiền giỏ hàng
@@ -369,7 +383,10 @@ const Orders = () => {
       const r1 = {
         method: 'GET'
       }
-      const response = await fetch('http://localhost:8080/order/items/' + tempId, r1)
+      const response = await fetch(
+        'http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/order/items/' + tempId,
+        r1
+      )
       const orderDetails = await response.json()
       if (orderDetails !== undefined) {
         setItemsOrder(orderDetails)
@@ -408,7 +425,7 @@ const Orders = () => {
           note: note
         })
       }
-      await fetch('http://localhost:8080/order/note', r)
+      await fetch('http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/order/note', r)
       loadOrders()
     } catch (error) {
       Router.replace('/pages/misc/500-server-error')
@@ -424,7 +441,10 @@ const Orders = () => {
         method: 'GET'
       }
 
-      const response = await fetch('http://localhost:8080/order/statistical/' + date1 + '/' + date2, r)
+      const response = await fetch(
+        'http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/order/statistical/' + date1 + '/' + date2,
+        r
+      )
       const statistical = await response.json()
       if (statistical !== undefined) {
         let total = 0

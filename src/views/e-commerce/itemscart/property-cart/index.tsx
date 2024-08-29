@@ -162,7 +162,10 @@ const PropertyOrder = () => {
       const r = {
         method: 'GET'
       }
-      const response = await fetch('http://localhost:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000', r)
+      const response = await fetch(
+        'http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+        r
+      )
       const itemsCart = await response.json()
       if (itemsCart !== undefined) {
         setItemsCart(itemsCart)
@@ -253,7 +256,7 @@ const PropertyOrder = () => {
         },
         body: JSON.stringify({ username: 'vovantung', note: note })
       }
-      const response = await fetch('http://localhost:8080/order', r)
+      const response = await fetch('http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/order', r)
       const order = await response.json()
 
       if (order !== undefined) {
@@ -281,7 +284,7 @@ const PropertyOrder = () => {
       const r = {
         method: 'DELETE'
       }
-      await fetch('http://localhost:8080/cartitem/' + userId, r)
+      await fetch('http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/cartitem/' + userId, r)
     } catch (error) {
       Router.replace('/pages/misc/500-server-error')
     }

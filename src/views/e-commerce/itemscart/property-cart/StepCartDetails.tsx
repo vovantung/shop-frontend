@@ -153,13 +153,20 @@ const StepOrderDetails = ({ setNote, note }: Props) => {
       const r = {
         method: 'DELETE'
       }
-      const response = await fetch('http://localhost:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000/' + id, r)
+      const response = await fetch(
+        'http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000/' +
+          id,
+        r
+      )
       const data = await response.json()
       if (data !== undefined && data == 1) {
         const r1 = {
           method: 'GET'
         }
-        const response1 = await fetch('http://localhost:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000', r1)
+        const response1 = await fetch(
+          'http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+          r1
+        )
         const itemsCart = await response1.json()
         if (itemsCart !== undefined) {
           setItemsCart(itemsCart)
@@ -184,7 +191,10 @@ const StepOrderDetails = ({ setNote, note }: Props) => {
       const r = {
         method: 'GET'
       }
-      const response = await fetch('http://localhost:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000', r)
+      const response = await fetch(
+        'http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+        r
+      )
       const itemsCart = await response.json()
       if (itemsCart !== undefined) {
         setItemsCart(itemsCart)
@@ -215,14 +225,17 @@ const StepOrderDetails = ({ setNote, note }: Props) => {
             userId: '2c9e80818e69d39b018e69d3d2ee0000'
           })
         }
-        await fetch('http://localhost:8080/cartitem/update-quantity', r)
+        await fetch('http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/cartitem/update-quantity', r)
       }
 
       // ** Đặt lại itemsCart sau khi đã cập nhật quantity, tính toán lại tổng giá sản phẩm và tổng tiền giỏ hàng
       const r1 = {
         method: 'GET'
       }
-      const response1 = await fetch('http://localhost:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000', r1)
+      const response1 = await fetch(
+        'http://alb-app1-1639993876.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+        r1
+      )
       const itemsCart = await response1.json()
       if (itemsCart !== undefined) {
         setItemsCart(itemsCart)
