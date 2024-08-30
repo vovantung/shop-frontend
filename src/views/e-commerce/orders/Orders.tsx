@@ -170,7 +170,8 @@ const Orders = () => {
         return
       }
       const r = {
-        method: 'GET'
+        method: 'GET',
+        origin: '*'
       }
       const response = await fetch(
         'http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/order/items/' + orderId,
@@ -192,7 +193,8 @@ const Orders = () => {
         return
       }
       const r = {
-        method: 'GET'
+        method: 'GET',
+        origin: '*'
       }
       const response = await fetch(
         'http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/order/items/' + orderId,
@@ -227,7 +229,8 @@ const Orders = () => {
         return
       }
       const r = {
-        method: 'GET'
+        method: 'GET',
+        origin: '*'
       }
       const response = await fetch(
         'http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/order/2c9e80818e69d39b018e69d3d2ee0000/' +
@@ -255,6 +258,7 @@ const Orders = () => {
       }
       const r = {
         method: 'PUT',
+        origin: '*',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -278,6 +282,7 @@ const Orders = () => {
       }
       const r = {
         method: 'PUT',
+        origin: '*',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -300,6 +305,7 @@ const Orders = () => {
       if (!(id == '' || id == undefined)) {
         const r = {
           method: 'DELETE',
+          origin: '*',
           headers: {
             'Content-Type': 'application/json'
           },
@@ -338,11 +344,14 @@ const Orders = () => {
     }
     try {
       const r = {
-        method: 'DELETE'
+        method: 'DELETE',
+        origin: '*'
       }
       await fetch('http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/order/item/' + tempId + '/' + id, r)
+
       const r1 = {
-        method: 'GET'
+        method: 'GET',
+        origin: '*'
       }
       const response = await fetch(
         'http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/order/items/' + tempId,
@@ -366,6 +375,7 @@ const Orders = () => {
       if (event.target.value > 0) {
         const r = {
           method: 'POST',
+          origin: '*',
           headers: {
             'Content-Type': 'application/json'
           },
@@ -381,7 +391,8 @@ const Orders = () => {
       // ** Đặt lại itemsCart sau khi đã cập nhật quantity, tính toán lại tổng giá sản phẩm và tổng tiền giỏ hàng
 
       const r1 = {
-        method: 'GET'
+        method: 'GET',
+        origin: '*'
       }
       const response = await fetch(
         'http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/order/items/' + tempId,
@@ -417,6 +428,7 @@ const Orders = () => {
     try {
       const r = {
         method: 'PUT',
+        origin: '*',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -438,7 +450,8 @@ const Orders = () => {
         return
       }
       const r = {
-        method: 'GET'
+        method: 'GET',
+        origin: '*'
       }
 
       const response = await fetch(

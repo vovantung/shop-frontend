@@ -90,6 +90,7 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
       // ** Nạp sản phẩm (Product)
       const r = {
         method: 'POST',
+        origin: '*',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -104,7 +105,8 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
 
       // ** Nạp giỏ hàng (ItemsCart) cho AppBarContent
       const r1 = {
-        method: 'GET'
+        method: 'GET',
+        origin: '*'
       }
       const response1 = await fetch(
         'http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
@@ -117,7 +119,8 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
 
       // ** Nạp Categories
       const r2 = {
-        method: 'GET'
+        method: 'GET',
+        origin: '*'
       }
       const response2 = await fetch('http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/category', r2)
       const c = await response2.json()
@@ -139,6 +142,7 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
       // ** Nạp sản phẩm (Product)
       const r = {
         method: 'POST',
+        origin: '*',
         headers: {
           'Content-Type': 'application/json'
         },

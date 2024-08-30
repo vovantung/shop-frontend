@@ -160,7 +160,8 @@ const PropertyOrder = () => {
     setInit(true)
     try {
       const r = {
-        method: 'GET'
+        method: 'GET',
+        origin: '*'
       }
       const response = await fetch(
         'http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',

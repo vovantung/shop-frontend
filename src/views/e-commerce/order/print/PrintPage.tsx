@@ -76,7 +76,8 @@ const OrderPrint = ({ id }: any) => {
     }
     try {
       const r = {
-        method: 'GET'
+        method: 'GET',
+        origin: '*'
       }
       const response = await fetch(
         'http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/order/items/' + id,
