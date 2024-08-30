@@ -210,7 +210,8 @@ const CartDropdown = (props: Props) => {
         method: 'DELETE'
       }
       const response = await fetch(
-        'http://localhost:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000/' + event.target.id,
+        'alb-app1-792301456.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000/' +
+          event.target.id,
         r
       )
       const data = await response.json()
@@ -219,7 +220,10 @@ const CartDropdown = (props: Props) => {
         const r1 = {
           method: 'GET'
         }
-        const response1 = await fetch('http://localhost:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000', r1)
+        const response1 = await fetch(
+          'alb-app1-792301456.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+          r1
+        )
         const itemsCart = await response1.json()
         if (itemsCart !== undefined) {
           setItemsCart(itemsCart)

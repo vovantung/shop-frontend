@@ -80,7 +80,7 @@ const OrderPrint = ({ id }: any) => {
         origin: '*'
       }
       const response = await fetch(
-        'http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/order/items/' + id,
+        'http://alb-app1-792301456.ap-southeast-1.elb.amazonaws.com:8080/order/items/' + id,
         r
       )
       const data = await response.json()
