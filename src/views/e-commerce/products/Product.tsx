@@ -10,6 +10,7 @@ import Slide, { SlideProps } from '@mui/material/Slide'
 import { ComponentType } from '@fullcalendar/common'
 import { Fragment, useState, SyntheticEvent } from 'react'
 import Router from 'next/router'
+import axios from 'axios'
 
 type TransitionProps = Omit<SlideProps, 'direction'>
 
@@ -62,25 +63,32 @@ const Product = (props: Props) => {
         },
         body: JSON.stringify({ productId: event.target.id, username: 'vovantung', quantity: 1 })
       }
-      await fetch('http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/cartitem', r)
 
-      const r1 = {
-        method: 'GET',
-        origin: '*',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Credentials': 'true',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
-          'Access-Control-Allow-Header':
-            'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-        }
-      }
-      const response = await fetch(
-        'http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
-        r1
+      // await fetch('http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/cartitem', r)
+      await axios.post('http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/cartitem', r)
+
+      // const r1 = {
+      //   method: 'GET',
+      //   origin: '*',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'Access-Control-Allow-Credentials': 'true',
+      //     'Access-Control-Allow-Origin': '*',
+      //     'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
+      //     'Access-Control-Allow-Header':
+      //       'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+      //   }
+      // }
+      // const response = await fetch(
+      //   'http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+      //   r1
+      // )
+
+      const response = await axios.get(
+        'http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000'
       )
-      const itemsCart = await response.json()
+
+      const itemsCart = await response.data
       if (itemsCart !== undefined) {
         props.setItemsCart(itemsCart)
       }

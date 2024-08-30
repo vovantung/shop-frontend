@@ -23,6 +23,7 @@ import LeftSidebarProduct from 'src/views/e-commerce/products/LeftSidebarProduct
 // ** Actions
 import { handleSelectAllMail } from 'src/store/apps/email'
 import Router from 'next/router'
+import axios from 'axios'
 
 interface ProductT {
   id: string
@@ -101,50 +102,62 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
         },
         body: JSON.stringify({ categories: categories, keySearch: keySearch })
       }
-      const response = await fetch('http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/product/filter', r)
-      const products = await response.json()
+
+      // const response = await fetch('http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/product/filter', r)
+      const response = await axios.post(
+        'http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/product/filter',
+        r
+      )
+      const products = await response.data
 
       if (products !== undefined) {
         setProducts(products)
       }
 
       // ** Nạp giỏ hàng (ItemsCart) cho AppBarContent
-      const r1 = {
-        method: 'GET',
-        origin: '*',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Credentials': 'true',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
-          'Access-Control-Allow-Header':
-            'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-        }
-      }
-      const response1 = await fetch(
-        'http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
-        r1
+      // const r1 = {
+      //   method: 'GET',
+      //   origin: '*',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'Access-Control-Allow-Credentials': 'true',
+      //     'Access-Control-Allow-Origin': '*',
+      //     'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
+      //     'Access-Control-Allow-Header':
+      //       'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+      //   }
+      // }
+
+      // const response1 = await fetch(
+      //   'http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+      //   r1
+      // )
+
+      const response1 = await axios.get(
+        'http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000'
       )
-      const itemsCart = await response1.json()
+
+      const itemsCart = await response1.data
       if (itemsCart !== undefined) {
         setItemsCart(itemsCart)
       }
 
       // ** Nạp Categories
-      const r2 = {
-        method: 'GET',
-        origin: '*',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Credentials': 'true',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
-          'Access-Control-Allow-Header':
-            'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-        }
-      }
-      const response2 = await fetch('http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/category', r2)
-      const c = await response2.json()
+      // const r2 = {
+      //   method: 'GET',
+      //   origin: '*',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'Access-Control-Allow-Credentials': 'false',
+      //     'Access-Control-Allow-Origin': '*',
+      //     'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
+      //     'Access-Control-Allow-Header':
+      //       'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+      //   }
+      // }
+      // const response2 = await fetch('http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/category', r2)
+      const response2 = await axios.get('http://alb-app1-2004556221.ap-southeast-1.elb.amazonaws.com:8080/category')
+      const c = await response2.data
       if (c !== undefined) {
         setCategory(c)
       }
