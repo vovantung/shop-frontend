@@ -143,7 +143,8 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
       setCategory([])
     } catch (error) {
       alert(error)
-      Router.replace('/pages/misc/500-server-error')
+
+      // Router.replace('/pages/misc/500-server-error')
     }
   }
 
