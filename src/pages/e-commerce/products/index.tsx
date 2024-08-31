@@ -138,7 +138,10 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
 
       const res = await axios.get('http://alb-app1-1640396686.ap-southeast-1.elb.amazonaws.com:8080/health-check')
       const rs = await res.data
-      alert(rs)
+      if (itemsCart !== undefined) {
+        alert(rs)
+      }
+
       setCategory([])
     } catch (error) {
       alert(error)
