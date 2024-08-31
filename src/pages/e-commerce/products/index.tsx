@@ -137,24 +137,13 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
       // }
 
       const r1 = {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Origin: 'https://main.d229jj886cbsbs.amplifyapp.com'
-        }
+        method: 'GET'
       }
       const response1 = await fetch('http://alb-app1-1640396686.ap-southeast-1.elb.amazonaws.com:8080/health-check', r1)
       const itemsCart = await response1.json()
       if (itemsCart !== undefined) {
         alert(itemsCart.fact)
       }
-
-      const res = await axios.get('http://alb-app1-1640396686.ap-southeast-1.elb.amazonaws.com:8080/health-check')
-      const rs = await res.data
-      if (itemsCart !== undefined) {
-        alert(rs)
-      }
-
       setCategory([])
     } catch (error) {
       alert(error)
