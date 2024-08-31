@@ -23,7 +23,6 @@ import LeftSidebarProduct from 'src/views/e-commerce/products/LeftSidebarProduct
 // ** Actions
 import { handleSelectAllMail } from 'src/store/apps/email'
 import Router from 'next/router'
-import axios from 'axios'
 
 interface ProductT {
   id: string
