@@ -127,10 +127,23 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
       // }
 
       // setCategory([])
+      // const r1 = {
+      //   method: 'GET'
+      // }
+      // const response1 = await fetch('https://catfact.ninja/fact', r1)
+      // const itemsCart = await response1.json()
+      // if (itemsCart !== undefined) {
+      //   alert(itemsCart.fact)
+      // }
+
       const r1 = {
-        method: 'GET'
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Origin: 'https://main.d229jj886cbsbs.amplifyapp.com'
+        }
       }
-      const response1 = await fetch('https://catfact.ninja/fact', r1)
+      const response1 = await fetch('http://alb-app1-1640396686.ap-southeast-1.elb.amazonaws.com:8080/health-check', r1)
       const itemsCart = await response1.json()
       if (itemsCart !== undefined) {
         alert(itemsCart.fact)
