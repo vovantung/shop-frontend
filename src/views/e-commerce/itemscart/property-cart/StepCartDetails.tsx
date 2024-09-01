@@ -151,22 +151,20 @@ const StepOrderDetails = ({ setNote, note }: Props) => {
     try {
       const id = event.target.id.substring(0, event.target.id.length - 1)
       const r = {
-        method: 'DELETE',
-        origin: '*'
+        method: 'DELETE'
       }
       const response = await fetch(
-        'http://alb-app1-1640396686.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000/' +
+        'https://alb-app1-1575328488.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000/' +
           id,
         r
       )
       const data = await response.json()
       if (data !== undefined && data == 1) {
         const r1 = {
-          method: 'GET',
-          origin: '*'
+          method: 'GET'
         }
         const response1 = await fetch(
-          'http://alb-app1-1640396686.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+          'https://alb-app1-1575328488.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
           r1
         )
         const itemsCart = await response1.json()
@@ -191,11 +189,10 @@ const StepOrderDetails = ({ setNote, note }: Props) => {
     // ** Đặt itemsCart, tính toán tổng giá sản phẩm và tổng tiền giỏ hàng
     try {
       const r = {
-        method: 'GET',
-        origin: '*'
+        method: 'GET'
       }
       const response = await fetch(
-        'http://alb-app1-1640396686.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+        'https://alb-app1-1575328488.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
         r
       )
       const itemsCart = await response.json()
@@ -219,7 +216,6 @@ const StepOrderDetails = ({ setNote, note }: Props) => {
       if (event.target.value > 0) {
         const r = {
           method: 'POST',
-          origin: '*',
           headers: {
             'Content-Type': 'application/json'
           },
@@ -229,16 +225,15 @@ const StepOrderDetails = ({ setNote, note }: Props) => {
             userId: '2c9e80818e69d39b018e69d3d2ee0000'
           })
         }
-        await fetch('http://alb-app1-1640396686.ap-southeast-1.elb.amazonaws.com:8080/cartitem/update-quantity', r)
+        await fetch('https://alb-app1-1575328488.ap-southeast-1.elb.amazonaws.com:8080/cartitem/update-quantity', r)
       }
 
       // ** Đặt lại itemsCart sau khi đã cập nhật quantity, tính toán lại tổng giá sản phẩm và tổng tiền giỏ hàng
       const r1 = {
-        method: 'GET',
-        origin: '*'
+        method: 'GET'
       }
       const response1 = await fetch(
-        'http://alb-app1-1640396686.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+        'https://alb-app1-1575328488.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
         r1
       )
       const itemsCart = await response1.json()

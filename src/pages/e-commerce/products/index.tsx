@@ -127,22 +127,8 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
       if (c !== undefined) {
         setCategory(c)
       }
-
-      // const r1 = {
-      //   method: 'GET'
-      // }
-      // const response1 = await fetch(
-      //   'https://alb-app1-1575328488.ap-southeast-1.elb.amazonaws.com:8080/health-check',
-      //   r1
-      // )
-      // const itemsCart = await response1.json()
-      // if (itemsCart !== undefined) {
-      //   alert(itemsCart)
-      // }
-      // setCategory([])
     } catch (error) {
-      // alert(error)
-      // Router.replace('/pages/misc/500-server-error')
+      Router.replace('/pages/misc/500-server-error')
     }
   }
 
