@@ -56,7 +56,7 @@ const Product = (props: Props) => {
         },
         body: JSON.stringify({ productId: event.target.id, username: 'vovantung', quantity: 1 })
       }
-      await fetch('hhttps://alb-app1-1575328488.ap-southeast-1.elb.amazonaws.com:8080/cartitem', r)
+      await fetch('https://alb-app1-1575328488.ap-southeast-1.elb.amazonaws.com:8080/cartitem', r)
 
       const r1 = {
         method: 'GET'
