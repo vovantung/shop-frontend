@@ -138,7 +138,10 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
       const r1 = {
         method: 'GET'
       }
-      const response1 = await fetch('http://18.142.253.74:8080/health-check', r1)
+      const response1 = await fetch(
+        'https://alb-app1-1575328488.ap-southeast-1.elb.amazonaws.com:8080/health-check',
+        r1
+      )
       const itemsCart = await response1.json()
       if (itemsCart !== undefined) {
         alert(itemsCart.fact)
