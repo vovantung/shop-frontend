@@ -357,6 +357,7 @@ const Orders = () => {
         setItemsOrder(orderDetails)
       }
     } catch (error) {
+      alert(error)
       Router.replace('/pages/misc/500-server-error')
     }
   }
