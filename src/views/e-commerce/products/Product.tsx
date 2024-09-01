@@ -71,6 +71,7 @@ const Product = (props: Props) => {
       }
       handleClick(event.target.name)
     } catch (error) {
+      alert(error)
       Router.replace('/pages/misc/500-server-error')
     }
   }
