@@ -154,7 +154,7 @@ const StepOrderDetails = ({ setNote, note }: Props) => {
         method: 'DELETE'
       }
       const response = await fetch(
-        'https://alb-app1-1575328488.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000/' +
+        'https://alb-app1-227838523.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000/' +
           id,
         r
       )
@@ -164,7 +164,7 @@ const StepOrderDetails = ({ setNote, note }: Props) => {
           method: 'GET'
         }
         const response1 = await fetch(
-          'https://alb-app1-1575328488.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+          'https://alb-app1-227838523.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
           r1
         )
         const itemsCart = await response1.json()
@@ -192,7 +192,7 @@ const StepOrderDetails = ({ setNote, note }: Props) => {
         method: 'GET'
       }
       const response = await fetch(
-        'https://alb-app1-1575328488.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+        'https://alb-app1-227838523.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
         r
       )
       const itemsCart = await response.json()
@@ -225,7 +225,7 @@ const StepOrderDetails = ({ setNote, note }: Props) => {
             userId: '2c9e80818e69d39b018e69d3d2ee0000'
           })
         }
-        await fetch('https://alb-app1-1575328488.ap-southeast-1.elb.amazonaws.com:8080/cartitem/update-quantity', r)
+        await fetch('https://alb-app1-227838523.ap-southeast-1.elb.amazonaws.com:8080/cartitem/update-quantity', r)
       }
 
       // ** Đặt lại itemsCart sau khi đã cập nhật quantity, tính toán lại tổng giá sản phẩm và tổng tiền giỏ hàng
@@ -233,7 +233,7 @@ const StepOrderDetails = ({ setNote, note }: Props) => {
         method: 'GET'
       }
       const response1 = await fetch(
-        'https://alb-app1-1575328488.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+        'https://alb-app1-227838523.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
         r1
       )
       const itemsCart = await response1.json()

@@ -65,7 +65,7 @@ const LeftSidebarProduct = (props: MailSidebarTypeT) => {
           }}
         >
           <Box sx={{ marginRight: '20px', marginLeft: '20px', marginBottom: '20px' }}>
-            <h4>Categries</h4>
+            <h4>Categories</h4>
             {props.c.map(x => (
               <FormGroup key={x.id + '1'} row>
                 <FormControlLabel

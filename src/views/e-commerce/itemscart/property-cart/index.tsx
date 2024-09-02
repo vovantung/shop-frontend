@@ -256,7 +256,7 @@ const PropertyOrder = () => {
         },
         body: JSON.stringify({ username: 'vovantung', note: note })
       }
-      const response = await fetch('https://alb-app1-1575328488.ap-southeast-1.elb.amazonaws.com:8080/order', r)
+      const response = await fetch('https://alb-app1-227838523.ap-southeast-1.elb.amazonaws.com:8080/order', r)
       const order = await response.json()
 
       if (order !== undefined) {
@@ -284,7 +284,7 @@ const PropertyOrder = () => {
       const r = {
         method: 'DELETE'
       }
-      await fetch('https://alb-app1-1575328488.ap-southeast-1.elb.amazonaws.com:8080/cartitem/' + userId, r)
+      await fetch('https://alb-app1-227838523.ap-southeast-1.elb.amazonaws.com:8080/cartitem/' + userId, r)
     } catch (error) {
       Router.replace('/pages/misc/500-server-error')
     }
