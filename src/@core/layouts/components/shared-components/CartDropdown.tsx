@@ -210,7 +210,7 @@ const CartDropdown = (props: Props) => {
         method: 'DELETE'
       }
       const response = await fetch(
-        'https://at6923hja1.execute-api.ap-southeast-1.amazonaws.com/cartitem/2c9e80818e69d39b018e69d3d2ee0000' +
+        'https://at6923hja1.execute-api.ap-southeast-1.amazonaws.com/cartitem/2c9e80818e69d39b018e69d3d2ee0000/' +
           event.target.id,
         r
       )
