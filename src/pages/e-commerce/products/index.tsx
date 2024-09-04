@@ -87,42 +87,52 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
 
   async function loadOrders() {
     try {
-      // ** Nạp sản phẩm (Product)
-      const r = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ categories: categories, keySearch: keySearch })
-      }
-      const response = await fetch('https://alb-app1-227838523.ap-southeast-1.elb.amazonaws.com:8080/product/filter', r)
-      const products = await response.json()
+      // // ** Nạp sản phẩm (Product)
+      // const r = {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify({ categories: categories, keySearch: keySearch })
+      // }
+      // const response = await fetch('https://alb-app1-227838523.ap-southeast-1.elb.amazonaws.com:8080/product/filter', r)
+      // const products = await response.json()
 
-      if (products !== undefined) {
-        setProducts(products)
-      }
+      // if (products !== undefined) {
+      //   setProducts(products)
+      // }
 
-      // ** Nạp giỏ hàng (ItemsCart) cho AppBarContent
-      const r1 = {
-        method: 'GET'
-      }
-      const response1 = await fetch(
-        'https://alb-app1-227838523.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
-        r1
-      )
-      const itemsCart = await response1.json()
-      if (itemsCart !== undefined) {
-        setItemsCart(itemsCart)
-      }
+      // // ** Nạp giỏ hàng (ItemsCart) cho AppBarContent
+      // const r1 = {
+      //   method: 'GET'
+      // }
+      // const response1 = await fetch(
+      //   'https://alb-app1-227838523.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+      //   r1
+      // )
+      // const itemsCart = await response1.json()
+      // if (itemsCart !== undefined) {
+      //   setItemsCart(itemsCart)
+      // }
+
+      // // ** Nạp Categories
+      // const r2 = {
+      //   method: 'GET'
+      // }
+      // const response2 = await fetch('https://alb-app1-582256637.ap-southeast-1.elb.amazonaws.com:443/category', r2)
+      // const c = await response2.json()
+      // if (c !== undefined) {
+      //   setCategory(c)
+      // }
 
       // ** Nạp Categories
       const r2 = {
         method: 'GET'
       }
-      const response2 = await fetch('https://alb-app1-582256637.ap-southeast-1.elb.amazonaws.com:443/category', r2)
+      const response2 = await fetch('https://at6923hja1.execute-api.ap-southeast-1.amazonaws.com/health-check', r2)
       const c = await response2.json()
       if (c !== undefined) {
-        setCategory(c)
+        alert(c)
       }
     } catch (error) {
       alert(error)
