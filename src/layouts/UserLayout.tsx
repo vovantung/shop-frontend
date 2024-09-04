@@ -77,6 +77,8 @@ const UserLayout = ({ children, contentHeightFixed, itemsCart, setItemsCart }: P
               settings={settings}
               saveSettings={saveSettings}
               toggleNavVisibility={props.toggleNavVisibility}
+              itemsCart={itemsCart}
+              setItemsCart={handleSetItemsCart}
             />
           )
         }
