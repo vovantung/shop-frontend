@@ -210,7 +210,7 @@ const CartDropdown = (props: Props) => {
         method: 'DELETE'
       }
       const response = await fetch(
-        'https://alb-app1-1575328488.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000/' +
+        'https://at6923hja1.execute-api.ap-southeast-1.amazonaws.com/cartitem/2c9e80818e69d39b018e69d3d2ee0000' +
           event.target.id,
         r
       )
@@ -221,7 +221,7 @@ const CartDropdown = (props: Props) => {
           method: 'GET'
         }
         const response1 = await fetch(
-          'https://alb-app1-1575328488.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+          'https://at6923hja1.execute-api.ap-southeast-1.amazonaws.com/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
           r1
         )
         const itemsCart = await response1.json()
