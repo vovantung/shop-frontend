@@ -88,19 +88,19 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
   async function loadOrders() {
     try {
       // // ** Nạp sản phẩm (Product)
-      // const r = {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify({ categories: categories, keySearch: keySearch })
-      // }
-      // const response = await fetch('https://alb-app1-227838523.ap-southeast-1.elb.amazonaws.com:8080/product/filter', r)
-      // const products = await response.json()
+      const r = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ categories: categories, keySearch: keySearch })
+      }
+      const response = await fetch('https://at6923hja1.execute-api.ap-southeast-1.amazonaws.com/product/filter', r)
+      const products = await response.json()
 
-      // if (products !== undefined) {
-      //   setProducts(products)
-      // }
+      if (products !== undefined) {
+        setProducts(products)
+      }
 
       // // ** Nạp giỏ hàng (ItemsCart) cho AppBarContent
       // const r1 = {
