@@ -38,16 +38,17 @@ const navigation = (): VerticalNavItemsType => {
       children: [
         {
           title: 'Analytics',
-          path: '/dashboards/analytics'
-        },
-        {
-          title: 'CRM',
-          path: '/dashboards/crm'
-        },
-        {
-          title: 'eCommerce',
-          path: '/dashboards/ecommerce'
+          path: '/dashboards/analytics_'
         }
+
+        // {
+        //   title: 'CRM',
+        //   path: '/dashboards/crm'
+        // },
+        // {
+        //   title: 'eCommerce',
+        //   path: '/dashboards/ecommerce'
+        // }
       ]
     },
     {
@@ -56,40 +57,41 @@ const navigation = (): VerticalNavItemsType => {
     {
       title: 'Email',
       icon: 'tabler:mail',
-      path: '/apps/email'
+      path: '/apps/email_'
     },
     {
       title: 'Chat',
       icon: 'tabler:messages',
-      path: '/apps/chat'
+      path: '/apps/chat_'
     },
     {
       title: 'Calendar',
       icon: 'tabler:calendar',
-      path: '/apps/calendar'
+      path: '/apps/calendar_'
     },
-    {
-      title: 'Invoice',
-      icon: 'tabler:file-dollar',
-      children: [
-        {
-          title: 'List',
-          path: '/apps/invoice/list'
-        },
-        {
-          title: 'Preview',
-          path: '/apps/invoice/preview'
-        },
-        {
-          title: 'Edit',
-          path: '/apps/invoice/edit'
-        },
-        {
-          title: 'Add',
-          path: '/apps/invoice/add'
-        }
-      ]
-    },
+
+    // {
+    //   title: 'Invoice',
+    //   icon: 'tabler:file-dollar',
+    //   children: [
+    //     {
+    //       title: 'List',
+    //       path: '/apps/invoice/list'
+    //     },
+    //     {
+    //       title: 'Preview',
+    //       path: '/apps/invoice/preview'
+    //     },
+    //     {
+    //       title: 'Edit',
+    //       path: '/apps/invoice/edit'
+    //     },
+    //     {
+    //       title: 'Add',
+    //       path: '/apps/invoice/add'
+    //     }
+    //   ]
+    // },
     {
       title: 'User',
       icon: 'tabler:user',
@@ -97,48 +99,50 @@ const navigation = (): VerticalNavItemsType => {
         {
           title: 'List',
           path: '/apps/user/list'
-        },
-        {
-          title: 'View',
-          children: [
-            {
-              title: 'Account',
-              path: '/apps/user/view/account'
-            },
-            {
-              title: 'Security',
-              path: '/apps/user/view/security'
-            },
-            {
-              title: 'Billing & Plans',
-              path: '/apps/user/view/billing-plan'
-            },
-            {
-              title: 'Notifications',
-              path: '/apps/user/view/notification'
-            },
-            {
-              title: 'Connection',
-              path: '/apps/user/view/connection'
-            }
-          ]
         }
-      ]
-    },
-    {
-      title: 'Roles & Permissions',
-      icon: 'tabler:settings',
-      children: [
-        {
-          title: 'Roles',
-          path: '/apps/roles'
-        },
-        {
-          title: 'Permissions',
-          path: '/apps/permissions'
-        }
+
+        // {
+        //   title: 'View',
+        //   children: [
+        //     {
+        //       title: 'Account',
+        //       path: '/apps/user/view/account'
+        //     },
+        //     {
+        //       title: 'Security',
+        //       path: '/apps/user/view/security'
+        //     },
+        //     {
+        //       title: 'Billing & Plans',
+        //       path: '/apps/user/view/billing-plan'
+        //     },
+        //     {
+        //       title: 'Notifications',
+        //       path: '/apps/user/view/notification'
+        //     },
+        //     {
+        //       title: 'Connection',
+        //       path: '/apps/user/view/connection'
+        //     }
+        //   ]
+        // }
       ]
     }
+
+    // {
+    //   title: 'Roles & Permissions',
+    //   icon: 'tabler:settings',
+    //   children: [
+    //     {
+    //       title: 'Roles',
+    //       path: '/apps/roles'
+    //     },
+    //     {
+    //       title: 'Permissions',
+    //       path: '/apps/permissions'
+    //     }
+    //   ]
+    // }
 
     // {
     //   title: 'Pages',

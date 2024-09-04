@@ -27,18 +27,19 @@ const navigation = (): HorizontalNavItemsType => {
         {
           icon: 'tabler:chart-pie-2',
           title: 'Analytics',
-          path: '/dashboards/analytics'
+          path: '/dashboards/analytics_'
         },
         {
           icon: 'tabler:device-analytics',
           title: 'CRM',
-          path: '/dashboards/crm'
-        },
-        {
-          icon: 'tabler:shopping-cart',
-          title: 'eCommerce',
-          path: '/dashboards/ecommerce'
+          path: '/dashboards/crm_'
         }
+
+        // {
+        //   icon: 'tabler:shopping-cart',
+        //   title: 'eCommerce',
+        //   path: '/dashboards/ecommerce'
+        // }
       ]
     },
     {
@@ -48,71 +49,73 @@ const navigation = (): HorizontalNavItemsType => {
         {
           title: 'Email',
           icon: 'tabler:mail',
-          path: '/apps/email'
+          path: '/apps/email_'
         },
         {
           title: 'Chat',
           icon: 'tabler:messages',
-          path: '/apps/chat'
+          path: '/apps/chat_'
         },
         {
           title: 'Calendar',
           icon: 'tabler:calendar',
-          path: '/apps/calendar'
+          path: '/apps/calendar_'
         },
-        {
-          title: 'Invoice',
-          icon: 'tabler:file-dollar',
-          children: [
-            {
-              title: 'List',
-              path: '/apps/invoice/list'
-            },
-            {
-              title: 'Preview',
-              path: '/apps/invoice/preview'
-            },
-            {
-              title: 'Edit',
-              path: '/apps/invoice/edit'
-            },
-            {
-              title: 'Add',
-              path: '/apps/invoice/add'
-            }
-          ]
-        },
+
+        // {
+        //   title: 'Invoice',
+        //   icon: 'tabler:file-dollar',
+        //   children: [
+        //     {
+        //       title: 'List',
+        //       path: '/apps/invoice/list'
+        //     },
+        //     {
+        //       title: 'Preview',
+        //       path: '/apps/invoice/preview'
+        //     },
+        //     {
+        //       title: 'Edit',
+        //       path: '/apps/invoice/edit'
+        //     },
+        //     {
+        //       title: 'Add',
+        //       path: '/apps/invoice/add'
+        //     }
+        //   ]
+        // },
         {
           title: 'User',
           icon: 'tabler:user',
           children: [
             {
               title: 'List',
-              path: '/apps/user/list'
+              path: '/apps/user/list_'
             },
             {
               title: 'View',
               children: [
                 {
                   title: 'Account',
-                  path: '/apps/user/view/account'
+                  path: '/apps/user/view/account_'
                 },
                 {
                   title: 'Security',
-                  path: '/apps/user/view/security'
-                },
-                {
-                  title: 'Billing & Plans',
-                  path: '/apps/user/view/billing-plan'
-                },
-                {
-                  title: 'Notifications',
-                  path: '/apps/user/view/notification'
-                },
-                {
-                  title: 'Connection',
-                  path: '/apps/user/view/connection'
+                  path: '/apps/user/view/security_'
                 }
+
+                // {
+                //   title: 'Billing & Plans',
+                //   path: '/apps/user/view/billing-plan'
+                // },
+                // {
+                //   title: 'Notifications',
+                //   path: '/apps/user/view/notification'
+                // },
+                // {
+                //   title: 'Connection',
+                //   path: '/apps/user/view/connection'
+                // }
               ]
             }
           ]
@@ -147,32 +150,33 @@ const navigation = (): HorizontalNavItemsType => {
           path: '/ui/icons',
           icon: 'tabler:brand-tabler'
         },
-        {
-          title: 'Cards',
-          icon: 'tabler:id',
-          children: [
-            {
-              title: 'Basic',
-              path: '/ui/cards/basic'
-            },
-            {
-              title: 'Advanced',
-              path: '/ui/cards/advanced'
-            },
-            {
-              title: 'Statistics',
-              path: '/ui/cards/statistics'
-            },
-            {
-              title: 'Widgets',
-              path: '/ui/cards/widgets'
-            },
-            {
-              title: 'Actions',
-              path: '/ui/cards/actions'
-            }
-          ]
-        },
+
+        // {
+        //   title: 'Cards',
+        //   icon: 'tabler:id',
+        //   children: [
+        //     {
+        //       title: 'Basic',
+        //       path: '/ui/cards/basic'
+        //     },
+        //     {
+        //       title: 'Advanced',
+        //       path: '/ui/cards/advanced'
+        //     },
+        //     {
+        //       title: 'Statistics',
+        //       path: '/ui/cards/statistics'
+        //     },
+        //     {
+        //       title: 'Widgets',
+        //       path: '/ui/cards/widgets'
+        //     },
+        //     {
+        //       title: 'Actions',
+        //       path: '/ui/cards/actions'
+        //     }
+        //   ]
+        // },
         {
           title: 'Components',
           icon: 'tabler:archive',
