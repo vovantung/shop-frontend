@@ -130,11 +130,14 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
         method: 'GET'
       }
       const response2 = await fetch('https://at6923hja1.execute-api.ap-southeast-1.amazonaws.com/health-check', r2)
-      const c = await response2.json()
-      if (c !== undefined) {
-        alert(c)
-        setCategory([])
-      }
+      alert(response2.body)
+      setCategory([])
+
+      // const c = await response2.json()
+      // if (c !== undefined) {
+      //   alert(c)
+      //   setCategory([])
+      // }
     } catch (error) {
       alert(error)
       Router.replace('/pages/misc/500-server-error')
