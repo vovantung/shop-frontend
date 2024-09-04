@@ -133,6 +133,7 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
       const c = await response2.json()
       if (c !== undefined) {
         alert(c)
+        setCategory([])
       }
     } catch (error) {
       alert(error)
