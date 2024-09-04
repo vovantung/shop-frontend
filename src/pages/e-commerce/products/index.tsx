@@ -102,42 +102,28 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
         setProducts(products)
       }
 
-      // // ** Nạp giỏ hàng (ItemsCart) cho AppBarContent
-      // const r1 = {
-      //   method: 'GET'
-      // }
-      // const response1 = await fetch(
-      //   'https://alb-app1-227838523.ap-southeast-1.elb.amazonaws.com:8080/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
-      //   r1
-      // )
-      // const itemsCart = await response1.json()
-      // if (itemsCart !== undefined) {
-      //   setItemsCart(itemsCart)
-      // }
-
-      // // ** Nạp Categories
-      // const r2 = {
-      //   method: 'GET'
-      // }
-      // const response2 = await fetch('https://alb-app1-582256637.ap-southeast-1.elb.amazonaws.com:443/category', r2)
-      // const c = await response2.json()
-      // if (c !== undefined) {
-      //   setCategory(c)
-      // }
+      // ** Nạp giỏ hàng (ItemsCart) cho AppBarContent
+      const r1 = {
+        method: 'GET'
+      }
+      const response1 = await fetch(
+        'https://at6923hja1.execute-api.ap-southeast-1.amazonaws.com/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+        r1
+      )
+      const itemsCart = await response1.json()
+      if (itemsCart !== undefined) {
+        setItemsCart(itemsCart)
+      }
 
       // ** Nạp Categories
       const r2 = {
         method: 'GET'
       }
-      const response2 = await fetch('https://at6923hja1.execute-api.ap-southeast-1.amazonaws.com/health-check', r2)
-      alert(response2.body)
-      setCategory([])
-
-      // const c = await response2.json()
-      // if (c !== undefined) {
-      //   alert(c)
-      //   setCategory([])
-      // }
+      const response2 = await fetch('https://at6923hja1.execute-api.ap-southeast-1.amazonaws.com/category', r2)
+      const c = await response2.json()
+      if (c !== undefined) {
+        setCategory(c)
+      }
     } catch (error) {
       alert(error)
       Router.replace('/pages/misc/500-server-error')
@@ -159,7 +145,7 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
         },
         body: JSON.stringify({ categories: categories_, keySearch: keySearch_ })
       }
-      const response = await fetch('https://alb-app1-582256637.ap-southeast-1.elb.amazonaws.com:443/product/filter', r)
+      const response = await fetch('https://at6923hja1.execute-api.ap-southeast-1.amazonaws.com/product/filter', r)
       const products = await response.json()
 
       if (products !== undefined) {
