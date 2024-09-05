@@ -78,7 +78,7 @@ const OrderPrint = ({ id }: any) => {
       const r = {
         method: 'GET'
       }
-      const response = await fetch('https://at6923hja1.execute-api.ap-southeast-1.amazonaws.com/order/items/' + id, r)
+      const response = await fetch('https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/order/items/' + id, r)
       const data = await response.json()
       if (data !== undefined) {
         setData(data)
