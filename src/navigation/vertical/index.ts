@@ -19,17 +19,18 @@ const navigation = (): VerticalNavItemsType => {
         }
       ]
     },
-    {
-      icon: 'tabler:shopping-cart',
-      title: 'e-Commerce',
-      children: [
-        {
-          icon: 'fluent-mdl2:product-list',
-          title: 'Products',
-          path: '/shop/products'
-        }
-      ]
-    },
+
+    // {
+    //   icon: 'tabler:shopping-cart',
+    //   title: 'e-Commerce',
+    //   children: [
+    //     {
+    //       icon: 'fluent-mdl2:product-list',
+    //       title: 'Products',
+    //       path: '/shop/products'
+    //     }
+    //   ]
+    // },
     {
       title: 'Dashboards',
       icon: 'tabler:smart-home',
@@ -98,7 +99,7 @@ const navigation = (): VerticalNavItemsType => {
       children: [
         {
           title: 'List',
-          path: '/apps/user/list'
+          path: '/apps/user/list_'
         }
 
         // {
