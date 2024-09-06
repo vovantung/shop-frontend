@@ -142,8 +142,10 @@ const App = (props: ExtendedAppProps) => {
         <Head>
           <title>{themeConfig.templateName}</title>
           <meta name='description' content={themeConfig.templateName} />
-          <meta name='keywords' content='TXU Shop' />
-          <meta name='viewport' content='initial-scale=1, width=device-width' />
+          <meta name='keywords' content='txu Shop' />
+          {/* <meta name='viewport' content='initial-scale=1, width=device-width' /> */}
+          {/* Tránh làm thay đổi cửa sổ trên mobile khi người dùng sử dụng thành phần input */}
+          <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
         </Head>
 
         <AuthProvider>
