@@ -25,7 +25,7 @@ const OrderPrint = ({ id }: InferGetStaticPropsType<typeof getStaticProps>) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
     const res = await axios.get(
-      'https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/order/2c9e80818e69d39b018e69d3d2ee0000'
+      'https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/order/2c9e80818e69d39b018e69d3d2ee0000'
     )
     const data: InvoiceType[] = await res.data
 

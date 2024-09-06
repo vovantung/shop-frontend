@@ -95,7 +95,7 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
         },
         body: JSON.stringify({ categories: categories, keySearch: keySearch })
       }
-      const response = await fetch('https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/product/filter', r)
+      const response = await fetch('https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/product/filter', r)
       const products = await response.json()
 
       if (products !== undefined) {
@@ -107,7 +107,7 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
         method: 'GET'
       }
       const response1 = await fetch(
-        'https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+        'https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
         r1
       )
       const itemsCart = await response1.json()
@@ -119,7 +119,7 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
       const r2 = {
         method: 'GET'
       }
-      const response2 = await fetch('https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/category', r2)
+      const response2 = await fetch('https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/category', r2)
       const c = await response2.json()
       if (c !== undefined) {
         setCategory(c)
@@ -145,7 +145,7 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
         },
         body: JSON.stringify({ categories: categories_, keySearch: keySearch_ })
       }
-      const response = await fetch('https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/product/filter', r)
+      const response = await fetch('https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/product/filter', r)
       const products = await response.json()
 
       if (products !== undefined) {
