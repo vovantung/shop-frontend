@@ -6,6 +6,7 @@ import Checkbox from '@mui/material/Checkbox'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormGroup from '@mui/material/FormGroup'
 import { Card, Input } from '@mui/material'
+import SEO from '../TXUHead'
 
 interface C {
   id: string
@@ -72,7 +73,7 @@ const LeftSidebarProduct = (props: MailSidebarTypeT) => {
               <Input
                 onChange={onSearch}
                 placeholder='Search product'
-                sx={{ width: '100%', resize: 'none' }}
+                sx={{ width: '100%', autocapitalize: 'none' }}
 
                 // startAdornment={
                 //   <InputAdornment position='start' sx={{ color: 'text.disabled' }}>
@@ -95,6 +96,7 @@ const LeftSidebarProduct = (props: MailSidebarTypeT) => {
           </Box>
         </Drawer>
       </Card>
+      <SEO></SEO>
     </div>
   )
 }
