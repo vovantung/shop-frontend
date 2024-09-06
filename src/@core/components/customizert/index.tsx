@@ -11,10 +11,18 @@ const Toggler = styled(Box)<BoxProps>(({ theme }) => ({
   cursor: 'pointer',
   position: 'fixed',
   padding: theme.spacing(2),
-  zIndex: theme.zIndex.modal,
+
+  // zIndex: theme.zIndex.modal,
+  // zIndex: theme.zIndex.modal,
+  zIndex: 1,
   transform: 'translateY(-50%)',
-  color: theme.palette.common.white,
-  backgroundColor: theme.palette.primary.main,
+
+  // color: theme.palette.common.white,
+
+  color: 'unset',
+
+  // backgroundColor: theme.palette.primary.main,
+  backgroundColor: 'transparent(1)',
   borderTopRightRadius: theme.shape.borderRadius,
   borderBottomRightRadius: theme.shape.borderRadius
 }))
@@ -27,7 +35,7 @@ const CustomizerT = ({ click }: Drop) => {
   return (
     <div className='customizer'>
       <Toggler className='customizer-toggler' onClick={click}>
-        <Icon icon='tabler:settings' />
+        <Icon icon='tabler:category' />
       </Toggler>
     </div>
   )
