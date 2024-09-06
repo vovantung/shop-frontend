@@ -151,7 +151,7 @@ const UserDropdown = (props: Props) => {
             Billing
           </Box>
         </MenuItemStyled>
-        <Divider sx={{ my: theme => `${theme.spacing(2)} !important` }} />
+        {/* <Divider sx={{ my: theme => `${theme.spacing(2)} !important` }} />
         <MenuItemStyled sx={{ p: 0 }} onClick={() => handleDropdownClose('/pages/help-center')}>
           <Box sx={styles}>
             <Icon icon='tabler:lifebuoy' />
@@ -169,7 +169,7 @@ const UserDropdown = (props: Props) => {
             <Icon icon='tabler:currency-dollar' />
             Pricing
           </Box>
-        </MenuItemStyled>
+        </MenuItemStyled> */}
         <Divider sx={{ my: theme => `${theme.spacing(2)} !important` }} />
         <MenuItemStyled sx={{ p: 0 }} onClick={handleLogout}>
           <Box sx={styles}>

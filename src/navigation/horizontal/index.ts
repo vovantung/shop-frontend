@@ -4,6 +4,29 @@ import { HorizontalNavItemsType } from 'src/@core/layouts/types'
 const navigation = (): HorizontalNavItemsType => {
   return [
     {
+      icon: 'tabler:smart-home',
+      title: 'Home'
+
+      // children: [
+      //   {
+      //     icon: 'tabler:chart-pie-2',
+      //     title: 'Analytics',
+      //     path: '/dashboards/analytics_'
+      //   },
+      //   {
+      //     icon: 'tabler:device-analytics',
+      //     title: 'CRM',
+      //     path: '/dashboards/crm_'
+      //   }
+
+      //   // {
+      //   //   icon: 'tabler:shopping-cart',
+      //   //   title: 'eCommerce',
+      //   //   path: '/dashboards/ecommerce'
+      //   // }
+      // ]
+    },
+    {
       icon: 'tabler:shopping-cart',
       title: 'e-Commerce',
       children: [
@@ -17,29 +40,6 @@ const navigation = (): HorizontalNavItemsType => {
           title: 'Orders',
           path: '/e-commerce/orders'
         }
-      ]
-    },
-
-    {
-      icon: 'tabler:smart-home',
-      title: 'Dashboards',
-      children: [
-        {
-          icon: 'tabler:chart-pie-2',
-          title: 'Analytics',
-          path: '/dashboards/analytics_'
-        },
-        {
-          icon: 'tabler:device-analytics',
-          title: 'CRM',
-          path: '/dashboards/crm_'
-        }
-
-        // {
-        //   icon: 'tabler:shopping-cart',
-        //   title: 'eCommerce',
-        //   path: '/dashboards/ecommerce'
-        // }
       ]
     },
     {

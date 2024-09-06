@@ -4,6 +4,28 @@ import { VerticalNavItemsType } from 'src/@core/layouts/types'
 const navigation = (): VerticalNavItemsType => {
   return [
     {
+      title: 'Home',
+      icon: 'tabler:smart-home',
+      badgeContent: 'new',
+      badgeColor: 'error'
+
+      // children: [
+      //   {
+      //     title: 'Analytics',
+      //     path: '/dashboards/analytics_'
+      //   }
+
+      //   // {
+      //   //   title: 'CRM',
+      //   //   path: '/dashboards/crm'
+      //   // },
+      //   // {
+      //   //   title: 'eCommerce',
+      //   //   path: '/dashboards/ecommerce'
+      //   // }
+      // ]
+    },
+    {
       icon: 'tabler:shopping-cart',
       title: 'e-Commerce',
       children: [
@@ -31,27 +53,7 @@ const navigation = (): VerticalNavItemsType => {
     //     }
     //   ]
     // },
-    {
-      title: 'Dashboards',
-      icon: 'tabler:smart-home',
-      badgeContent: 'new',
-      badgeColor: 'error',
-      children: [
-        {
-          title: 'Analytics',
-          path: '/dashboards/analytics_'
-        }
 
-        // {
-        //   title: 'CRM',
-        //   path: '/dashboards/crm'
-        // },
-        // {
-        //   title: 'eCommerce',
-        //   path: '/dashboards/ecommerce'
-        // }
-      ]
-    },
     {
       sectionTitle: 'Apps & Pages'
     },
