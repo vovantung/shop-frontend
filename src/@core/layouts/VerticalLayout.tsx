@@ -123,7 +123,6 @@ const VerticalLayout = (props: LayoutProps) => {
 
       {/* Customizer */}
       {disableCustomizer || hidden ? null : <Customizer />}
-
       {/* Scroll to top button */}
       {scrollToTop ? (
         scrollToTop(props)

@@ -14,6 +14,7 @@ import ContentProduct from 'src/views/e-commerce/products/ContentProduct'
 import LeftSidebarProduct from 'src/views/e-commerce/products/LeftSidebarProduct'
 
 import Router from 'next/router'
+import CustomizerT from 'src/@core/components/customizert'
 
 interface ProductT {
   id: string
@@ -187,6 +188,7 @@ const ProductPage = ({ setItemsCart }: ProductType) => {
         />
         <ContentProduct setItemsCart={handlesetItemsCart} products={products} />
       </Box>
+      {lgAbove ? null : <CustomizerT click={handleLeftSidebarToggle}></CustomizerT>}
     </>
   )
 }
