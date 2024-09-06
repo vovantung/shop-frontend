@@ -72,7 +72,7 @@ const LeftSidebarProduct = (props: MailSidebarTypeT) => {
               <Input
                 onChange={onSearch}
                 placeholder='Search product'
-                sx={{ width: '100%' }}
+                sx={{ width: '100%', resize: 'none' }}
 
                 // startAdornment={
                 //   <InputAdornment position='start' sx={{ color: 'text.disabled' }}>
