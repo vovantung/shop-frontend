@@ -1,9 +1,6 @@
 // ** React Imports
 import { useEffect, useState } from 'react'
 
-// ** Redux Imports
-import { useDispatch, useSelector } from 'react-redux'
-
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import { useTheme } from '@mui/material/styles'
@@ -12,16 +9,10 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 // ** Hooks
 import { useSettings } from 'src/@core/hooks/useSettings'
 
-// ** Types
-import { RootState, AppDispatch } from 'src/store'
-import { MailLayoutType1 } from 'src/types/apps/emailTypes'
-
 // ** Email App Component Imports
 import ContentProduct from 'src/views/e-commerce/products/ContentProduct'
 import LeftSidebarProduct from 'src/views/e-commerce/products/LeftSidebarProduct'
 
-// ** Actions
-import { handleSelectAllMail } from 'src/store/apps/email'
 import Router from 'next/router'
 
 interface ProductT {
@@ -37,29 +28,25 @@ interface C {
   vaule: boolean
 }
 
-const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
+export type ProductType = { setItemsCart: any }
+
+const ProductPage = ({ setItemsCart }: ProductType) => {
   const handlesetItemsCart = (itemsCart: []) => {
     setItemsCart(itemsCart)
   }
 
-  // ** States
-
-  const [composeOpen, setComposeOpen] = useState<boolean>(false)
-  const [mailDetailsOpen, setMailDetailsOpen] = useState<boolean>(false)
   const [leftSidebarOpen, setLeftSidebarOpen] = useState<boolean>(false)
 
   // ** Hooks
   const theme = useTheme()
   const { settings } = useSettings()
-  const dispatch = useDispatch<AppDispatch>()
   const lgAbove = useMediaQuery(theme.breakpoints.up('lg'))
   const hidden = useMediaQuery(theme.breakpoints.down('lg'))
-  const store = useSelector((state: RootState) => state.email)
 
   const leftSidebarWidth = 300
   const { skin } = settings
 
-  const toggleComposeOpen = () => setComposeOpen(!composeOpen)
+  // const toggleComposeOpen = () => setComposeOpen(!composeOpen)
   const handleLeftSidebarToggle = () => setLeftSidebarOpen(!leftSidebarOpen)
 
   const [init, setInit] = useState<boolean>(false)
@@ -189,30 +176,19 @@ const EmailAppLayout = ({ setItemsCart }: MailLayoutType1) => {
         }}
       >
         <LeftSidebarProduct
+          search={handleSearch}
           handleCategory={handleCategory}
           c={category}
-          store={store}
           hidden={hidden}
           lgAbove={lgAbove}
-          dispatch={dispatch}
-          mailDetailsOpen={mailDetailsOpen}
           leftSidebarOpen={leftSidebarOpen}
           leftSidebarWidth={leftSidebarWidth}
-          toggleComposeOpen={toggleComposeOpen}
-          setMailDetailsOpen={setMailDetailsOpen}
-          handleSelectAllMail={handleSelectAllMail}
           handleLeftSidebarToggle={handleLeftSidebarToggle}
         />
-        <ContentProduct
-          search={handleSearch}
-          products={products}
-          lgAbove={lgAbove}
-          handleLeftSidebarToggle={handleLeftSidebarToggle}
-          setItemsCart={handlesetItemsCart}
-        />
+        <ContentProduct setItemsCart={handlesetItemsCart} products={products} />
       </Box>
     </>
   )
 }
 
-export default EmailAppLayout
+export default ProductPage

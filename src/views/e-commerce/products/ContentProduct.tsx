@@ -1,12 +1,8 @@
 import { useState } from 'react'
 import Pagination from './PaginationTXU'
-import { Card, CardContent, Grid, IconButton } from '@mui/material'
+import { Grid } from '@mui/material'
 import Product from './Product'
 
-import Icon from 'src/@core/components/icon'
-import Input from '@mui/material/Input'
-
-import InputAdornment from '@mui/material/InputAdornment'
 import { Box } from '@mui/system'
 
 // interface C {
@@ -23,15 +19,12 @@ interface ProductT {
 }
 
 export type MailLogType1 = {
-  lgAbove: boolean
-  handleLeftSidebarToggle: () => void
   setItemsCart: any
   products: ProductT[]
-  search: any
 }
 
 const ContentProduct = (props: MailLogType1) => {
-  const { lgAbove, handleLeftSidebarToggle, setItemsCart } = props
+  const { setItemsCart } = props
 
   const [productsOfPage, setProductsOfPage] = useState<ProductT[]>([])
 
@@ -43,9 +36,9 @@ const ContentProduct = (props: MailLogType1) => {
     setProductsOfPage(productsOfPage_)
   }
 
-  async function onSearch(event: any) {
-    props.search(event.target.value)
-  }
+  // async function onSearch(event: any) {
+  //   props.search(event.target.value)
+  // }
 
   // const setItemsCart = (itemsCart: []) => {
   //   props.setItemsCart(itemsCart)
@@ -62,7 +55,7 @@ const ContentProduct = (props: MailLogType1) => {
       /> */}
 
       <div>
-        <Card sx={{ marginBottom: '20px' }}>
+        {/* <Card sx={{ marginBottom: '20px' }}>
           <CardContent sx={{ p: theme => `${theme.spacing(3, 5.25, 4)} !important` }}>
             <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
               {lgAbove ? null : (
@@ -82,7 +75,7 @@ const ContentProduct = (props: MailLogType1) => {
               />
             </Box>
           </CardContent>
-        </Card>
+        </Card> */}
 
         <Grid container spacing={6}>
           {productsOfPage.map(product => (

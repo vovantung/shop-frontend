@@ -5,9 +5,7 @@ import Drawer from '@mui/material/Drawer'
 import Checkbox from '@mui/material/Checkbox'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormGroup from '@mui/material/FormGroup'
-import { MailStore } from 'src/types/apps/emailTypes'
-import { Dispatch } from 'react'
-import { Card } from '@mui/material'
+import { Card, Input } from '@mui/material'
 
 interface C {
   id: string
@@ -17,23 +15,22 @@ interface C {
 
 export type MailSidebarTypeT = {
   hidden: boolean
-  store: MailStore
   lgAbove: boolean
-  dispatch: Dispatch<any>
   leftSidebarOpen: boolean
   leftSidebarWidth: number
-  mailDetailsOpen: boolean
-  toggleComposeOpen: () => void
   handleLeftSidebarToggle: () => void
-  setMailDetailsOpen: (val: boolean) => void
-  handleSelectAllMail: (val: boolean) => void
   c: C[]
   handleCategory: any
+  search: any
 }
 
 const LeftSidebarProduct = (props: MailSidebarTypeT) => {
   // ** Props
   const { lgAbove, leftSidebarOpen, leftSidebarWidth, handleLeftSidebarToggle } = props
+
+  async function onSearch(event: any) {
+    props.search(event.target.value)
+  }
 
   return (
     <div style={{ height: '100%' }}>
@@ -64,7 +61,28 @@ const LeftSidebarProduct = (props: MailSidebarTypeT) => {
             }
           }}
         >
-          <Box sx={{ marginRight: '20px', marginLeft: '20px', marginBottom: '20px' }}>
+          <Box sx={{ marginRight: '20px', marginLeft: '20px', marginBottom: '20px', marginTop: '20px' }}>
+            {/* <CardContent sx={{ p: theme => `${theme.spacing(3, 5.25, 4)} !important` }}> */}
+            <Box sx={{ alignItems: 'center', width: '100%' }}>
+              {/* {lgAbove ? null : (
+                  <IconButton onClick={handleLeftSidebarToggle} sx={{ mr: 1, ml: -2 }}>
+                    <Icon icon='tabler:menu-2' fontSize={20} />
+                  </IconButton>
+                )} */}
+              <Input
+                onChange={onSearch}
+                placeholder='Search product'
+                sx={{ width: '100%' }}
+
+                // startAdornment={
+                //   <InputAdornment position='start' sx={{ color: 'text.disabled' }}>
+                //     <Icon icon='tabler:search' />
+                //   </InputAdornment>
+                // }
+              />
+            </Box>
+            {/* </CardContent> */}
+
             <h4>Categories</h4>
             {props.c.map(x => (
               <FormGroup key={x.id + '1'} row>
