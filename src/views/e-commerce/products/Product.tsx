@@ -56,13 +56,13 @@ const Product = (props: Props) => {
         },
         body: JSON.stringify({ productId: event.target.id, username: 'vovantung', quantity: 1 })
       }
-      await fetch('https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/cartitem', r)
+      await fetch('https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/cartitem', r)
 
       const r1 = {
         method: 'GET'
       }
       const response = await fetch(
-        'https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+        'https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
         r1
       )
       const itemsCart = await response.json()

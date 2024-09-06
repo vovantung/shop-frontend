@@ -173,7 +173,7 @@ const Orders = () => {
         method: 'GET'
       }
       const response = await fetch(
-        'https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/order/items/' + orderId,
+        'https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/order/items/' + orderId,
         r
       )
       const itemsOrder = await response.json()
@@ -195,7 +195,7 @@ const Orders = () => {
         method: 'GET'
       }
       const response = await fetch(
-        'https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/order/items/' + orderId,
+        'https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/order/items/' + orderId,
         r
       )
       const itemsOrder = await response.json()
@@ -230,7 +230,7 @@ const Orders = () => {
         method: 'GET'
       }
       const response = await fetch(
-        'https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/order/2c9e80818e69d39b018e69d3d2ee0000/' +
+        'https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/order/2c9e80818e69d39b018e69d3d2ee0000/' +
           date1 +
           '/' +
           date2 +
@@ -263,7 +263,7 @@ const Orders = () => {
           delivered: event.target.checked
         })
       }
-      await fetch('https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/order/delivered', r)
+      await fetch('https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/order/delivered', r)
       loadOrders()
     } catch (error) {
       Router.replace('/pages/misc/500-server-error')
@@ -286,7 +286,7 @@ const Orders = () => {
           paided: event.target.checked
         })
       }
-      await fetch('https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/order/paided', r)
+      await fetch('https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/order/paided', r)
 
       loadOrders()
     } catch (error) {
@@ -307,7 +307,7 @@ const Orders = () => {
             orderId: id
           })
         }
-        await fetch('https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/order', r)
+        await fetch('https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/order', r)
         loadOrders()
       }
     } catch (error) {
@@ -340,13 +340,13 @@ const Orders = () => {
       const r = {
         method: 'DELETE'
       }
-      await fetch('https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/order/item/' + tempId + '/' + id, r)
+      await fetch('https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/order/item/' + tempId + '/' + id, r)
 
       const r1 = {
         method: 'GET'
       }
       const response = await fetch(
-        'https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/order/items/' + tempId,
+        'https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/order/items/' + tempId,
         r1
       )
       const orderDetails = await response.json()
@@ -377,7 +377,7 @@ const Orders = () => {
             orderId: tempId
           })
         }
-        await fetch('https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/order/item/update-quantity', r)
+        await fetch('https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/order/item/update-quantity', r)
       }
 
       // ** Đặt lại itemsCart sau khi đã cập nhật quantity, tính toán lại tổng giá sản phẩm và tổng tiền giỏ hàng
@@ -386,7 +386,7 @@ const Orders = () => {
         method: 'GET'
       }
       const response = await fetch(
-        'https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/order/items/' + tempId,
+        'https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/order/items/' + tempId,
         r1
       )
       const orderDetails = await response.json()
@@ -427,7 +427,7 @@ const Orders = () => {
           note: note
         })
       }
-      await fetch('https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/order/note', r)
+      await fetch('https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/order/note', r)
       loadOrders()
     } catch (error) {
       alert(error)
@@ -445,7 +445,7 @@ const Orders = () => {
       }
 
       const response = await fetch(
-        'https://vwrl1c5f4a.execute-api.ap-southeast-1.amazonaws.com/order/statistical/' + date1 + '/' + date2,
+        'https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/order/statistical/' + date1 + '/' + date2,
         r
       )
       const statistical = await response.json()
