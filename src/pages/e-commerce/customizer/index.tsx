@@ -31,7 +31,7 @@ interface Drop {
   click: any
 }
 
-const CustomizerT = ({ click }: Drop) => {
+const CategoryShowButton = ({ click }: Drop) => {
   return (
     <div className='customizer'>
       <Toggler className='customizer-toggler' onClick={click}>
@@ -41,4 +41,4 @@ const CustomizerT = ({ click }: Drop) => {
   )
 }
 
-export default CustomizerT
+export default CategoryShowButton

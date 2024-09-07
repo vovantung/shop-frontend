@@ -163,7 +163,7 @@ const PropertyOrder = () => {
         method: 'GET'
       }
       const response = await fetch(
-        'https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
+        'https://aqyt9pi0p6.execute-api.ap-southeast-1.amazonaws.com/cartitem/2c9e80818e69d39b018e69d3d2ee0000',
         r
       )
       const itemsCart = await response.json()
@@ -256,7 +256,7 @@ const PropertyOrder = () => {
         },
         body: JSON.stringify({ username: 'vovantung', note: note })
       }
-      const response = await fetch('https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/order', r)
+      const response = await fetch('https://aqyt9pi0p6.execute-api.ap-southeast-1.amazonaws.com/order', r)
       const order = await response.json()
 
       if (order !== undefined) {
@@ -284,7 +284,7 @@ const PropertyOrder = () => {
       const r = {
         method: 'DELETE'
       }
-      await fetch('https://lqx0l17k9f.execute-api.ap-southeast-1.amazonaws.com/cartitem/' + userId, r)
+      await fetch('https://aqyt9pi0p6.execute-api.ap-southeast-1.amazonaws.com/cartitem/' + userId, r)
     } catch (error) {
       Router.replace('/pages/misc/500-server-error')
     }
